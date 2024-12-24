@@ -179,7 +179,23 @@ createSnow(200);
 loop();
 
 //----------tree----------
-MorphSVGPlugin.convertToPath("polygon");
+// MorphSVGPlugin.convertToPath("polygon");
+
+      // Khi tài liệu đã sẵn sàng
+      document.addEventListener("DOMContentLoaded", function() {
+        // Sử dụng MorphSVGPlugin để chuyển đổi polygon thành đường path
+        MorphSVGPlugin.convertToPath("polygon");
+
+        // Tạo hiệu ứng với GSAP sau khi chuyển đổi
+        gsap.from("#polygon", {
+            duration: 2,
+            scale: 0.5,
+            rotation: 360,
+            transformOrigin: "50% 50%",
+            ease: "elastic.out(1, 0.5)"
+        });
+    });
+
 var xmlns = "http://www.w3.org/2000/svg",
     xlinkns = "http://www.w3.org/1999/xlink",
     select = function (s) {
@@ -407,21 +423,89 @@ mainTl
 mainTl.add(starTl, 0);
 gsap.globalTimeline.timeScale(1.5);
 
+// $(document).ready(function () {
+//     var $card = $(".card"),
+//         $bgCard = $(".bgCard"),
+//         $icon = $(".icon"),
+//         cartPageBottomP = document.querySelector(".cart-page-bottom p"),
+//         cartPageBottomH4 = document.querySelector(".cart-page-bottom h4");
+//     let textTitle = "Gửi Dili ! ";
+//     let charArrTitle = textTitle.split("");
+//     let text =
+//     " Merry Christmas! 🎄✨ Chúc mừng bạn đã vượt qua kỳ thi vừa rồi! Giáng sinh này, hãy dành thời gian để thư giãn và tận hưởng không khí an lành, ấm áp bên những người thân yêu. Hy vọng mùa lễ hội sẽ mang đến cho bạn thật nhiều niềm vui, hạnh phúc và tiếp thêm động lực cho những mục tiêu sắp tới. Chúc bạn một Giáng sinh tràn đầy yêu thương và một năm mới thành công rực rỡ! 🎅❤️"
+//     let charArrContent = text.split("");
+//     var currentIndexTitle = 0;
+//     var currentIndexContent = 0;
+//     var textIntervalTitle;
+//     var textIntervalContent;
+//     function resetText() {
+//         clearInterval(textIntervalTitle);
+//         clearInterval(textIntervalContent);
+//         cartPageBottomH4.textContent = "";
+//         cartPageBottomP.textContent = "";
+//         currentIndexTitle = 0;
+//         currentIndexContent = 0;
+//     }
+
+//     $card.on("click", function () {
+//         $(this).toggleClass("is-opened");
+//         if ($card.hasClass("is-opened")) {
+//             textIntervalTitle = setInterval(function () {
+//                 if (currentIndexTitle < charArrTitle.length) {
+//                     cartPageBottomH4.textContent += charArrTitle[currentIndexTitle];
+//                     currentIndexTitle++;
+//                     console.log(currentIndexTitle);
+//                 } else {
+//                     clearInterval(textIntervalTitle);
+//                     textIntervalContent = setInterval(function () {
+//                         if (currentIndexContent < charArrContent.length) {
+//                             cartPageBottomP.textContent += charArrContent[currentIndexContent];
+//                             currentIndexContent++;
+//                             console.log(currentIndexContent);
+//                         } else {
+//                             clearInterval(textIntervalContent);
+//                         }
+//                     }, 100);
+//                 }
+//             }, 100);
+//          } else {
+//             resetText();
+//         }
+//     });
+
+//     $(".centerer").on("click", function () {
+//         $card.fadeIn();
+//         $bgCard.fadeIn();
+//         $icon.fadeIn();
+//     });
+   
+//     $(".fa-xmark").on("click", function () {
+//         $card.fadeOut();
+//         $bgCard.fadeOut();
+//         $icon.fadeOut();
+//         $card.removeClass("is-opened");
+//         resetText();
+//     });
+// });
+
+
 $(document).ready(function () {
     var $card = $(".card"),
         $bgCard = $(".bgCard"),
         $icon = $(".icon"),
         cartPageBottomP = document.querySelector(".cart-page-bottom p"),
         cartPageBottomH4 = document.querySelector(".cart-page-bottom h4");
+
     let textTitle = "Gửi Dili ! ";
     let charArrTitle = textTitle.split("");
-    let text =
-        "Chúc dili giáng sinh vui vẻ, hạnh phúc, an khanh, thịnh vượng, phát tài, phát lộc, tiền vào như nước, sức khỏe dồi dào, lộc vào đầy nhà :))";
+    let text = " Merry Christmas! 🎄✨ Chúc mừng bạn đã vượt qua kỳ thi vừa rồi! ...";
     let charArrContent = text.split("");
+    
     var currentIndexTitle = 0;
     var currentIndexContent = 0;
     var textIntervalTitle;
     var textIntervalContent;
+    
     function resetText() {
         clearInterval(textIntervalTitle);
         clearInterval(textIntervalContent);
@@ -431,6 +515,15 @@ $(document).ready(function () {
         currentIndexContent = 0;
     }
 
+    // Hiển thị hiệu ứng fadeIn khi click vào .centerer
+    $(".centerer").on("click", function () {
+        console.log(1)
+        $card.fadeIn();      // Hiển thị thẻ .card
+        $bgCard.fadeIn();    // Hiển thị thẻ .bgCard
+        $icon.fadeIn();      // Hiển thị thẻ .icon
+    });
+
+    // Sự kiện click vào thẻ .card để chạy hiệu ứng text
     $card.on("click", function () {
         $(this).toggleClass("is-opened");
         if ($card.hasClass("is-opened")) {
@@ -438,35 +531,29 @@ $(document).ready(function () {
                 if (currentIndexTitle < charArrTitle.length) {
                     cartPageBottomH4.textContent += charArrTitle[currentIndexTitle];
                     currentIndexTitle++;
-                    console.log(currentIndexTitle);
                 } else {
                     clearInterval(textIntervalTitle);
                     textIntervalContent = setInterval(function () {
                         if (currentIndexContent < charArrContent.length) {
                             cartPageBottomP.textContent += charArrContent[currentIndexContent];
                             currentIndexContent++;
-                            console.log(currentIndexContent);
                         } else {
                             clearInterval(textIntervalContent);
                         }
                     }, 100);
                 }
             }, 100);
-         } else {
+        } else {
             resetText();
         }
     });
 
-    $(".centerer").on("click", function () {
-        $card.fadeIn();
-        $bgCard.fadeIn();
-        $icon.fadeIn();
-    });
+    // Đóng các thẻ khi click vào biểu tượng .fa-xmark
     $(".fa-xmark").on("click", function () {
-        $card.fadeOut();
-        $bgCard.fadeOut();
-        $icon.fadeOut();
-        $card.removeClass("is-opened");
-        resetText();
+        $card.fadeOut();      // Ẩn thẻ .card
+        $bgCard.fadeOut();    // Ẩn thẻ .bgCard
+        $icon.fadeOut();      // Ẩn thẻ .icon
+        $card.removeClass("is-opened");  // Gỡ bỏ class 'is-opened'
+        resetText();  // Reset text
     });
 });

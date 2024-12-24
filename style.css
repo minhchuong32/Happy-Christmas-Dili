@@ -339,7 +339,7 @@
 
 .cart-page-bottom {
   z-index: 1;
-  border-left: none !important;
+  /* border-left: none !important; */
   background-position: -22px 80px;
 }
 .cart-page-bottom h4{
