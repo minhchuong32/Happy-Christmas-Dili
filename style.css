@@ -421,3 +421,8 @@ p {
     color: #fff;
     cursor: pointer;
 }
+
+.cart-page-bottom a {
+  color:#d35448;
+  font-size: 30px;
+}
