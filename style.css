@@ -423,6 +423,7 @@ p {
 }
 
 .cart-page-bottom a {
+  padding: 10px;
   color:#d35448;
   font-size: 30px;
 }
