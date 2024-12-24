@@ -495,7 +495,7 @@ $(document).ready(function () {
         cartPageBottomP = document.querySelector(".cart-page-bottom p"),
         cartPageBottomH4 = document.querySelector(".cart-page-bottom h4");
 
-    let textTitle = "Gửi Dili ! ";
+    let textTitle = "Gửi Dili ❤️!";
     let charArrTitle = textTitle.split("");
     let text =  " Merry Christmas Dili! 🎄✨ Chúc mừng dili đã vượt qua kỳ thi vừa rồi! Giáng sinh này, hãy dành thời gian để thư giãn và tận hưởng không khí an lành, ấm áp bên những người thân yêu. Hy vọng mùa lễ hội sẽ mang đến cho dili thật nhiều niềm vui, hạnh phúc và tiếp thêm động lực cho những mục tiêu sắp tới. Chúc dili một Giáng sinh tràn đầy yêu thương và một năm mới thành công rực rỡ ^^ 🎅❤️";
     let charArrContent = text.split("");
